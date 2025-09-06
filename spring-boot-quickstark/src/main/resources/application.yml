@@ -16,3 +16,14 @@ server:
   feature:
     helloSwitch: true
     closeMsg: "该接口正在维护，请10分钟后再来！！"
+
+  ## 荣联云短信
+wzhy:
+    sms:
+      ccp:
+        serverIp: app.cloopen.com
+        port: 8883
+        accountSId: 2c94811c9860a9c4019919ec7e9b1fef
+        accountToken: 3e53fb9d5344473d81f2996f168553e7
+        appId: 2c94811c9860a9c4019919ec800a1ff6
+        templateId: 1
