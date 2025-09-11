@@ -39,3 +39,9 @@ wzhy:
             accountToken: 3e53fb9d5344473d81f2996f168553e7
             appId: 2c94811c9860a9c4019919ec800a1ff6
             templateId: 1
+```
+### 3.查询
+1. 创建查询模块  @GetMapping 查询
+2. @PostMapping 新增
+3. @DeleteMapping 删除
+4. @PutMapping 修改
