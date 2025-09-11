@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @Slf4j
 @SpringBootTest
 class TeamTest {
@@ -14,5 +16,16 @@ class TeamTest {
     @Test
     void testTeam() {
         log.info("team:{}",team);
+        assertEquals("wzh",team.getLeader());
+
+        /*log.info("team:{}",team);
+        if (team.getAge() > 5 || team.getAge() < 1){
+            log.error("年龄不符合要求");
+        }*/
+    }
+
+    @Test
+    void testTeam2() {
+        assertEquals("wzh222",team.getLeader());
     }
 }
