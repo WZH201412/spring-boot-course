@@ -9,3 +9,7 @@ spring:
     multipart:
       max-file-size: 10MB     # 单个上传文件大小限定为10M，默认值为1M
       max-request-size: 100MB # 单次上传文件大小限定为100M，默认值为10M
+
+custom:
+  qrcode:
+    content: "https://www.baidu.com"
