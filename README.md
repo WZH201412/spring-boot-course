@@ -45,3 +45,6 @@ wzhy:
 2. @PostMapping 新增
 3. @DeleteMapping 删除
 4. @PutMapping 修改
+### 枚举
+1. feat:完成自定义枚举的练习,enums包建立DrinkType
+2. feat:补充说明：enums包建立DrinkType和ExpressStatus，Controller包添加DrinkController和Expre
