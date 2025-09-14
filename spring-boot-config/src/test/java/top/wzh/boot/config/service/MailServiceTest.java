@@ -4,7 +4,13 @@ import enums.ResultStatus;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.multipart.MultipartFile;
 import top.wzh.boot.config.model.Mail;
+
+import java.io.File;
+import java.io.IOException;
 
 @SpringBootTest
 class MailServiceTest {
@@ -59,4 +65,34 @@ class MailServiceTest {
         mail.setContent(content);
         mailService.sendHtmlMail(mail);
     }
+
+    /* ---------------- 3. 带附件邮件 ---------------- */
+    @Test
+    void sendAttachmentsMail() throws IOException {
+        Mail mail = new Mail();
+        mail.setTo("2258262190@qq.com");
+        mail.setSubject("测试带附件的邮件");
+        mail.setContent("带附件的邮件内容");
+
+        // 准备两个本地文件（换成你电脑里真实存在的文件）
+        File file1 = new File("C:\\Users\\王振辉\\Desktop\\桌面\\摄影\\摄影\\IMG_20220901_172316.jpg");
+        File file2 = new File("C:\\Users\\王振辉\\Desktop\\桌面\\摄影\\摄影\\mmexport1693970719665.jpg");
+
+        MultipartFile[] files = new MultipartFile[2]; {
+            files[0] = new MockMultipartFile(
+                    file1.getName(),
+                    file2.getName(),
+                    "image/jpeg",
+                    FileCopyUtils.copyToByteArray(file1)
+            );
+            files[1] = new MockMultipartFile(
+                    file2.getName(),
+                    file2.getName(),
+                    "image/jpeg",
+                    FileCopyUtils.copyToByteArray(file2)
+            );
+            mailService.sendAttachmentsMail(mail, files);
+        }
+    }
+
 }

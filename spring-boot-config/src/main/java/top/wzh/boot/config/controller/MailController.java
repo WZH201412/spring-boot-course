@@ -3,11 +3,10 @@ package top.wzh.boot.config.controller;
 import enums.ResultStatus;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import top.wzh.boot.config.aip.ApiResponse;
 import top.wzh.boot.config.model.Mail;
 import top.wzh.boot.config.service.MailService;
@@ -45,4 +44,18 @@ public class MailController {
         return ResponseEntity.ok(ApiResponse.error("发送失败"));
     }
 
+    /**
+     * 发送带附件的邮件
+     * @param mail
+     * @param files
+     * @return
+     */
+    @PostMapping(value = "/attachments", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ApiResponse<ResultStatus>> sendAttachmentsMail(@Valid @RequestPart("mail") Mail mail,
+                                                                         @RequestPart("files") MultipartFile[] files){
+        ResultStatus status = mailService.sendAttachmentsMail(mail, files);
+        return status == ResultStatus.SUCCESS ?
+                ResponseEntity.ok(ApiResponse.success("发送成功", status)) :
+                ResponseEntity.badRequest().body(ApiResponse.error("发送失败"));
+    }
 }
