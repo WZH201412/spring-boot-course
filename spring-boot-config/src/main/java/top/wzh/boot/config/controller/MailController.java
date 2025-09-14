@@ -50,12 +50,13 @@ public class MailController {
      * @param files
      * @return
      */
-    @PostMapping(value = "/attachments", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ApiResponse<ResultStatus>> sendAttachmentsMail(@Valid @RequestPart("mail") Mail mail,
-                                                                         @RequestPart("files") MultipartFile[] files){
+    @PostMapping(value = "/attachment", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ApiResponse<ResultStatus>> sendAttachmentsMail(
+            @Valid @RequestPart("mail") Mail mail,
+            @RequestPart("files") MultipartFile[] files) {
         ResultStatus status = mailService.sendAttachmentsMail(mail, files);
-        return status == ResultStatus.SUCCESS ?
-                ResponseEntity.ok(ApiResponse.success("发送成功", status)) :
-                ResponseEntity.badRequest().body(ApiResponse.error("发送失败"));
+        return status == ResultStatus.SUCCESS
+                ? ResponseEntity.ok(ApiResponse.success("发送成功", status))
+                : ResponseEntity.badRequest().body(ApiResponse.error("发送失败"));
     }
 }
