@@ -31,4 +31,18 @@ public class MailController {
         return ResponseEntity.ok(ApiResponse.error("发送失败"));
     }
 
+    /**
+     * 发送HTML邮件
+     * @param mail
+     * @return
+     */
+    @PostMapping("/html")
+    public ResponseEntity<ApiResponse<ResultStatus>> sendHtmlMail(@Valid @RequestBody Mail mail){
+        ResultStatus status = mailService.sendHtmlMail(mail);
+        if (status == ResultStatus.SUCCESS){
+            return ResponseEntity.ok(ApiResponse.success("发送成功", status));
+        }
+        return ResponseEntity.ok(ApiResponse.error("发送失败"));
+    }
+
 }

@@ -10,4 +10,11 @@ public interface MailService {
      * @return
      */
     ResultStatus sendSimpleMail(Mail mail);
+
+    /**
+     * 发送HTML邮件
+     * @param mail 邮件信息
+     * @return
+     */
+    ResultStatus sendHtmlMail(Mail mail);
 }
