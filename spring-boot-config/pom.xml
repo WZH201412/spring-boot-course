@@ -43,6 +43,11 @@
             <artifactId>core</artifactId>
             <version>3.4.1</version>
         </dependency>
+        <!--整合邮件发送功能-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
     </dependencies>
 
 

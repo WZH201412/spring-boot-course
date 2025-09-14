@@ -48,3 +48,5 @@ wzhy:
 ### 枚举
 1. feat:完成自定义枚举的练习,enums包建立DrinkType
 2. feat:补充说明：enums包建立DrinkType和ExpressStatus，Controller包添加DrinkController和Expre
+
+### 单元测试 ctrl+shift+t

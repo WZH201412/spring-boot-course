@@ -4,12 +4,29 @@ team:
   age: 5
   createDate: "2025-09-10"
 
-spring:
-  servlet:
-    multipart:
-      max-file-size: 10MB     # 单个上传文件大小限定为10M，默认值为1M
-      max-request-size: 100MB # 单次上传文件大小限定为100M，默认值为10M
+#spring:
+#  servlet:
+#    multipart:
+#      max-file-size: 10MB     # 单个上传文件大小限定为10M，默认值为1M
+#      max-request-size: 100MB # 单次上传文件大小限定为100M，默认值为10M
 
 custom:
   qrcode:
     content: "https://www.baidu.com"
+
+
+spring:
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 2258262190@qq.com
+    password: hwzwudayedzjdiai   # 16位授权码
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: false        # 587端口不要启用SSL
